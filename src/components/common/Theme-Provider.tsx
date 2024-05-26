@@ -20,7 +20,7 @@ const Provider: React.FC<CommonPropsType> = ({ children }) => {
   }
 
   return (
-    <ThemeProvider>{children}</ThemeProvider>
+    <ThemeProvider attribute='class'>{children}</ThemeProvider>
   )
 }
 

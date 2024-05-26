@@ -2,17 +2,26 @@
 
 import React from 'react'
 import { useTheme } from 'next-themes'
+import { MdLightMode, MdDarkMode } from "react-icons/md";
+
 
 const ThemeSwitcher: React.FC = () => {
-  
-  const {theme, setTheme} = useTheme()
+
+  const { theme, setTheme } = useTheme()
+
+  function clickHandler() {
+    theme === 'dark' ? setTheme("light") : setTheme("dark");
+  }
 
   return (
-    <div className='flex gap-3'>
-      <p>Current Theme is {theme}</p>
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
-    </div>
+    <button
+      className='p-5'
+      onClick={clickHandler}
+    >
+      {
+        theme == 'dark' ? <MdLightMode size={25} />: <MdDarkMode size={25} /> 
+      }
+    </button>
   )
 }
 
