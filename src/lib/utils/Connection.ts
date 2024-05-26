@@ -1,17 +1,19 @@
+import { Redis } from "ioredis";
 import mongoose from "mongoose";
 
+
+const url = process.env.DB_URL || ""
+const redisURL = process.env.REDIS_URL ?? ""
+
 // mongodb connection
-export default function dbConnect() {
-    const url = process.env.DB_URL || ""
-    console.log(url, "url")
-
-    mongoose.connect(url)
-        .then(() => {
-            console.log("DB Connected.")
-        })
-        .catch((error) => {
-            console.log("DB Not Connected.", error)
-            throw new Error("Error in mongodb connection.")
-        })
-
+export default async function dbConnect() {
+    try {
+        await mongoose.connect(url)
+    } catch(error) {
+        console.log(error)
+        throw new Error("Error in mongodb connection.")
+    }
 }
+
+//redis cache Instance
+export const redisCache = new Redis(redisURL)

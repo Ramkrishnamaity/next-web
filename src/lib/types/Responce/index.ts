@@ -1,6 +1,6 @@
 
 export type CommonResponceType <T = Record<string, any>> = T & {
-    status: true,
+    status: boolean,
     message: string,
     data?: T,
     error?: any

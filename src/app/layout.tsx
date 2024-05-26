@@ -4,7 +4,7 @@ import "./globals.css";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ThemeProvider from "@/components/common/Theme-Provider";
-import AuthProvider from "@/components/common/Auth-Provider";
+// import AuthProvider from "@/components/common/Auth-Provider";
 import { getServerSession } from "next-auth";
 
 const poppins = Poppins({
@@ -28,14 +28,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <AuthProvider>
+        {/* <AuthProvider> */}
           <ThemeProvider>
             <div className="bg-richWhite dark:bg-richBlack text-richBlack dark:text-richWhite w-full min-h-screen flex justify-center items-center">
               {children}
             </div>
             <ToastContainer />
           </ThemeProvider>
-        </AuthProvider>
+        {/* </AuthProvider> */}
       </body>
     </html>
   );
